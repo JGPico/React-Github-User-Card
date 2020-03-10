@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import UserCard from "./components/UserCard";
+import SearchForm from "./components/SearchForm";
 import './App.css';
 
 class App extends React.Component {
@@ -34,10 +35,30 @@ class App extends React.Component {
       });
   }
 
+  filterSearch = queryBit => {
+    
+    this.state.followers.map(element => {
+      if (element.login.toLowerCase().includes(queryBit.toLowerCase())) {
+
+        this.setState({
+          followers: element
+        })
+
+      }
+      //  else {
+      //   this.setState({
+      //     followers: element
+      //   })
+      // }
+    })
+    
+  }
+
   render() {
     return (
       <div>
         <h1 className='intro-h1'>A list of GitHub users</h1>
+        <SearchForm filterSearch={this.filterSearch}/>
         <UserCard 
         user={this.state.user}
         followers={this.state.followers}/>

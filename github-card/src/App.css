@@ -44,3 +44,8 @@
   border-radius: 8px;
   padding: 5px;
 }
+
+.card-holder img {
+  border-radius: 8px;
+  margin-top: 5px;
+}
